@@ -5,67 +5,143 @@
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	</head>
+		<style>
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+			}
+			
+			td, th {
+				border: 1px solid #dddddd;
+				text-align: left;
+				padding: 8px;
+			}
+			
+			tr:nth-child(even) {
+				background-color: #dddddd;
+			}
+		  </style>
 	</head>
 	<body>
 		<div class="content text-center">
 			<h1>¿42 Nos espía?</h1>
 		</div>
+		
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
 				<h3>SOBRE TÍ</h3>
-				<img src="<%= me.image_url %>" alt="Girl in a jacket" width="200" height="300"> </img>
+				<img src="<%= me.image_url %>" alt="your photo" width="200" height="300"> </img>
 			</div>
 			<div class="col-md-3">
-				<br></br> <br></br>
-				<p>id [<%= me.id %>]</p><p>email [<%= me.email %>]</p><p>login [<%= me.login %>]</p><p> first_name [<%= me.first_name %>]</p><p> last_name [<%= me.last_name %>]</p><p>  </p>
-				<p>usual_first_name [<%= me.usual_first_name %>]</p><p> url <a href="https://profile.intra.42.fr/users/<%= me.login %>">Intra</a></a></p><p> phone [<%= me.phone %>]</p>
+				<br></br>
+				<table>
+					<tr> <td>id</td> <td><%= me.id %></td> </tr>
+					<tr> <td>email</td> <td><%= me.email %> </td> </tr>
+					<tr> <td>login</td> <td><%= me.login %></td>  </tr>
+					<tr> <td>first_name</td> <td><%= me.first_name %></td> </tr>
+					<tr> <td>last_name</td> <td><%= me.last_name %></td> </tr>
+					<tr> <td>usual_first_name</td> <td><%= me.usual_first_name %></td> </tr>
+					<tr> <td>url</td> <td> <a href="https://profile.intra.42.fr/users/<%= me.login %>" target="blanck">Intra</a></td> </tr>
+					<tr> <td>phone</td> <td><%= me.phone %></td> </tr>
+				</table>
 			</div>
 			<div class="col-md-3">
-				<br></br> <br></br>
-				<p>displayname [<%= me.displayname %>]</p><p> usual_full_name [<%= me.usual_full_name %>]</p><p>  correction_point [<%= me.correction_point %>]</p>
-				<p>pool_month [<%= me.pool_month %>]</p> <p>pool_year [<%= me.pool_year %>]</p> <p>location [<%= me.location %>]</p>  <p>wallet [<%= me.wallet %>]</p>
+				<br></br> 
+				<table>
+					<tr> <td>displayname </td> <td><%= me.displayname %></td> </tr>
+					<tr> <td>usual_full_name </td> <td><%= me.usual_full_name %></td> </tr>
+					<tr> <td>correction_point </td> <td><%= me.correction_point %></td> </tr>
+					<tr> <td>pool_month </td> <td><%= me.pool_month %></td> </tr>
+					<tr> <td>pool_year </td> <td><%= me.pool_year %></td> </tr>
+					<tr> <td>location </td> <td><%= me.location %></td> </tr>
+					<tr> <td>wallet </td> <td><%= me.wallet %></td> </tr>
+				</table>
 			</div>
 		</div>
+		<br></br>
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
 				<h4>CURSUS</h4>
-				<p>Level [<%= me.cursus_users[0].level %>]</p>
-				<p>begin_at [<%= me.cursus_users[0].begin_at %>]</p>
-				<p>end_at [<%= me.cursus_users[0].end_at %>]</p>
+				<table>
+					<tr><td>Level</td> <td><%= me.cursus_users[3].level %></td></tr>
+					<tr><td>begin_at</td> <td><%= me.cursus_users[3].begin_at %></td></tr>
+					<tr><td>grade</td> <td><%= me.cursus_users[3].grade %></td></tr>
+					<tr><td>blackholed_at</td> <td><%= me.cursus_users[3].blackholed_at %></td></tr>
+				</table>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-4">
 				<h4>SKILLS</h4>
-				<% for (var i = 0; i < me.cursus_users[0].skills.length; i++) { %>
-					<p> <%= me.cursus_users[0].skills[i].name %> |
-						<%= me.cursus_users[0].skills[i].level %> |
-				<% } %>
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>Level</th>
+					</tr>
+					<% for (var i = 0; i < me.cursus_users[3].skills.length; i++) { %>
+						<tr>
+							<td> <%= me.cursus_users[3].skills[i].name %> </td>
+							<td> <%= me.cursus_users[3].skills[i].level %> </td>
+						</tr>
+					<% } %>
+				</table>
 			</div>
 			<div class="col-md-2">
 				<h4>C PISCINE</h4>
-				<p>Level [<%= me.cursus_users[2].level %>]</p>
-				<p>begin_at [<%= me.cursus_users[2].begin_at %>]</p>
-				<p>end_at [<%= me.cursus_users[2].end_at %>]</p>
+				<table>
+					<tr><td>Level</td> <td><%= me.cursus_users[2].level %></td></tr>
+					<tr><td>begin_at</td> <td><%= me.cursus_users[2].begin_at %></td></tr>
+					<tr><td>end_at</td> <td><%= me.cursus_users[2].end_at %></td></tr>
+				</table>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-11">
+			<div class="col-md-3">
 				<h3>Tus Proyectos</h3>
-				
-				<% for (var i = 0; i < me.projects_users.length; i++) { %>
-					|	Name <b>[<%= me.projects_users[i].project.name %>]</b>
-						Final Mark <b>[<%= me.projects_users[i].final_mark %>]</b> 
-						Status	<b> <%= me.projects_users[i].status %> </b> |
-							<% if(i % 3 == 0) {%>
-								<br></br>
-							<%}%>
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>Final Mark</th>
+						<th>Status</th>
+					</tr>
+					<% for (var i = 0; i < me.projects_users.length; i++) { %>
+						<tr>
+							<td> <%= me.projects_users[i].project.name %> </td>
+							<td> <%= me.projects_users[i].final_mark %> </td> 
+							<td> <%= me.projects_users[i].status %> </td> 
+						</tr>
 					<% } %>
+				</table>
+			</div>
+			<div class="col-md-7">
+				<h3>Tus Logros</h3>
+				<table>
+					<tr>
+						<th>Logo</th>
+						<th>name</th>
+						<th>description</th>
+						<th>tier</th>
+						<th>kind</th>
+					</tr>
+					<% for (var i = 0; i < me.achievements.length; i++) { %>
+						<tr>
+							<td> <img src="https://profile.intra.42.fr/<%= me.achievements[i].image %>" alt="logo" width="100" height="70"> </img> </td>
+							<td> <%= me.achievements[i].name %> </td>
+							<td> <%= me.achievements[i].description %> </td>
+							<td> <%= me.achievements[i].tier %> </td>
+							<td> <%= me.achievements[i].kind %> </td>
+						</tr>
+					<% } %>
+				</table>
 			</div>
 		</div>
-				<p><%= JSON.stringify(me) %></p> 
+		<div class="row">
+			<div class="col-md-1"></div>
+			
+		</div>
+				<!--<p><%= JSON.stringify(me.cursus_users[3]) %></p> -->
 			</br></br>
 	
 			<form role="form" method="post" action="/request">
