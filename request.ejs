@@ -27,7 +27,19 @@
 		<div class="content text-center">
 			<h1>¿42 Nos espía?</h1>
 		</div>
-		
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 content text-center">
+				<h3>¿Quieres saberlo todo de otro estudiante?</h3>
+				<form role="form" method="post" action="/request">
+					<div class="form-group">
+						<input type="text" class="form-control" name="request" id="request">
+					</div>
+					<button type="submit" class="btn btn-default">Buscar</button>
+				</form>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
@@ -137,20 +149,6 @@
 				</table>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-1"></div>
-			
-		</div>
-				<!--<p><%= JSON.stringify(me.cursus_users[3]) %></p> -->
-			</br></br>
-	
-			<form role="form" method="post" action="/request">
-			<div class="form-group">
-				<label for="request">Request:</label>
-				<input type="text" class="form-control" name="request" id="request">
-			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
-			</form>
-		</br></br><p><%= req_ret %></p></br></br>
+		<!--<p><%= JSON.stringify(me.cursus_users[3]) %></p> -->
 	</body>
 </html>
