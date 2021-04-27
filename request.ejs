@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title>Oauth2</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	</head>
+	</head>
+	<body>
+		<div class="content text-center">
+			<h1>¿42 Nos espía?</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<h3>SOBRE TÍ</h3>
+				<img src="<%= me.image_url %>" alt="Girl in a jacket" width="200" height="300"> </img>
+			</div>
+			<div class="col-md-3">
+				<br></br> <br></br>
+				<p>id [<%= me.id %>]</p><p>email [<%= me.email %>]</p><p>login [<%= me.login %>]</p><p> first_name [<%= me.first_name %>]</p><p> last_name [<%= me.last_name %>]</p><p>  </p>
+				<p>usual_first_name [<%= me.usual_first_name %>]</p><p> url <a href="https://profile.intra.42.fr/users/<%= me.login %>">Intra</a></a></p><p> phone [<%= me.phone %>]</p>
+			</div>
+			<div class="col-md-3">
+				<br></br> <br></br>
+				<p>displayname [<%= me.displayname %>]</p><p> usual_full_name [<%= me.usual_full_name %>]</p><p>  correction_point [<%= me.correction_point %>]</p>
+				<p>pool_month [<%= me.pool_month %>]</p> <p>pool_year [<%= me.pool_year %>]</p> <p>location [<%= me.location %>]</p>  <p>wallet [<%= me.wallet %>]</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<h4>CURSUS</h4>
+				<p>Level [<%= me.cursus_users[0].level %>]</p>
+				<p>begin_at [<%= me.cursus_users[0].begin_at %>]</p>
+				<p>end_at [<%= me.cursus_users[0].end_at %>]</p>
+			</div>
+			<div class="col-md-2">
+				<h4>SKILLS</h4>
+				<% for (var i = 0; i < me.cursus_users[0].skills.length; i++) { %>
+					<p> <%= me.cursus_users[0].skills[i].name %> |
+						<%= me.cursus_users[0].skills[i].level %> |
+				<% } %>
+			</div>
+			<div class="col-md-2">
+				<h4>C PISCINE</h4>
+				<p>Level [<%= me.cursus_users[2].level %>]</p>
+				<p>begin_at [<%= me.cursus_users[2].begin_at %>]</p>
+				<p>end_at [<%= me.cursus_users[2].end_at %>]</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-11">
+				<h3>Tus Proyectos</h3>
+				
+				<% for (var i = 0; i < me.projects_users.length; i++) { %>
+					|	Name <b>[<%= me.projects_users[i].project.name %>]</b>
+						Final Mark <b>[<%= me.projects_users[i].final_mark %>]</b> 
+						Status	<b> <%= me.projects_users[i].status %> </b> |
+							<% if(i % 3 == 0) {%>
+								<br></br>
+							<%}%>
+					<% } %>
+			</div>
+		</div>
+				<p><%= JSON.stringify(me) %></p> 
+			</br></br>
+	
+			<form role="form" method="post" action="/request">
+			<div class="form-group">
+				<label for="request">Request:</label>
+				<input type="text" class="form-control" name="request" id="request">
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</br></br><p><%= req_ret %></p></br></br>
+	</body>
+</html>
